@@ -4,7 +4,7 @@
 
 pkgname=plasma-workspace
 pkgver=5.1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='KDE Plasma Workspace'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/plasma-workspace'
@@ -32,6 +32,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
+    -DLIBEXEC_INSTALL_DIR=lib \
     -DSYSCONF_INSTALL_DIR=/etc \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
