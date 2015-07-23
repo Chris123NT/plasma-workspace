@@ -64,7 +64,7 @@ package_plasma-workspace() {
 
 package_drkonqi() {
   pkgdesc='KDE crash handler'
-  depends=('kdewebkit' 'kxmlrpcclient')
+  depends=('kdewebkit' 'kxmlrpcclient' 'gdb')
 
   cd build/drkonqi
   make DESTDIR="${pkgdir}" install
