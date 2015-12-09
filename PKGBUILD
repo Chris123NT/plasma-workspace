@@ -6,7 +6,7 @@
 pkgbase=plasma-workspace
 pkgname=('plasma-workspace' 'drkonqi')
 pkgver=5.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE Plasma Workspace'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/plasma-workspace'
@@ -59,6 +59,9 @@ package_plasma-workspace() {
   # Remove conflicts with drkonqi
   rm "${pkgdir}"/usr/lib/drkonqi
   rm -r "${pkgdir}"/usr/share/drkonqi
+
+  # Drop plasma-wayland session file, doesn't work
+  rm -r "$pkgdir"/usr/share/wayland-sessions
 }
 
 package_drkonqi() {
