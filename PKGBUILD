@@ -53,6 +53,7 @@ package_plasma-workspace() {
               'baloo: Baloo search runner'
               'appstream-qt: package search runner')
   conflicts=('kdebase-workspace')
+  provides=('notification-daemon')
 
   cd build
   make DESTDIR="$pkgdir" install
