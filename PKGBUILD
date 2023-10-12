@@ -31,7 +31,7 @@ depends=(accountsservice
          kconfigwidgets
          kcoreaddons
          kcrash
-       # kde-cli-tools
+         kde-cli-tools
          kdeclarative
          kded
          kdbusaddons
