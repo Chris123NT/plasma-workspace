@@ -64,7 +64,6 @@ depends=(accountsservice
          kuserfeedback6
          kwallet
          kwayland
-       # kwayland-integration
          kwidgetsaddons
          kwin
          kwindowsystem
@@ -121,6 +120,7 @@ optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 appl
             'discover: manage applications installation from the launcher'
             'gpsd: GPS based geolocation'
             'kdepim-addons: displaying PIM events in the calendar'
+            'kwayland-integration: Wayland integration for Qt5 applications'
             'networkmanager-qt: IP based geolocation'
             'plasma-workspace-wallpapers: additional wallpapers')
 conflicts=(plasma-wayland-session)
