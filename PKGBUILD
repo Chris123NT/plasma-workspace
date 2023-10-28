@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 
 pkgname=plasma-workspace
-pkgver=5.27.80.20231020
+pkgver=5.27.80.20231028
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
@@ -130,7 +130,7 @@ groups=(plasma)
 #source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
 #        kde.pam)
 makedepends+=(git)
-_commit=5c5bba6d8d6c289d6de3536ba77edf839ba42170
+_commit=bbfb387955c0ac77823f924b49ec3b9baeae03fe
 source=(git+https://invent.kde.org/plasma/$pkgname#commit=$_commit
         kde.pam)
 sha256sums=('SKIP'
