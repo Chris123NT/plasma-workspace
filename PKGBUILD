@@ -125,16 +125,12 @@ optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 appl
             'plasma-workspace-wallpapers: additional wallpapers')
 conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
-backup=('etc/pam.d/kde')
 groups=(plasma)
-#source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
-#        kde.pam)
+#source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 makedepends+=(git)
 _commit=bbfb387955c0ac77823f924b49ec3b9baeae03fe
-source=(git+https://invent.kde.org/plasma/$pkgname#commit=$_commit
-        kde.pam)
-sha256sums=('SKIP'
-            '00090291204baabe9d6857d3b1419832376dd2e279087d718b64792691e86739')
+source=(git+https://invent.kde.org/plasma/$pkgname#commit=$_commit)
+sha256sums=('SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -150,6 +146,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 "$srcdir"/kde.pam "$pkgdir"/etc/pam.d/kde
 }
