@@ -61,7 +61,7 @@ depends=(accountsservice
          ksystemstats
          ktexteditor
          ktextwidgets
-         kuserfeedback6
+         kuserfeedback
          kwallet
          kwayland
          kwidgetsaddons
