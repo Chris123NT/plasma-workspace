@@ -3,58 +3,145 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 
-pkgbase=plasma-workspace
-pkgname=(plasma-workspace plasma-wayland-session)
-pkgver=5.27.9.1
+pkgname=plasma-workspace
+pkgver=5.27.80
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(knotifyconfig5 ksystemstats ktexteditor5 libqalculate kde-cli-tools appstream-qt
-         xorg-xrdb xorg-xsetroot kactivitymanagerd kholidays5 xorg-xmessage milou prison5 kwin
-         plasma-integration kpeople5 kactivities-stats5 kquickcharts5 kuserfeedback5 kpipewire
-         accountsservice kio-extras kio-fuse qt5-tools oxygen-sounds)
-makedepends=(extra-cmake-modules kdoctools5 gpsd baloo5 networkmanager-qt5 plasma-wayland-protocols wayland-protocols kunitconversion5)
+depends=(accountsservice
+       # appstream-qt
+         fontconfig
+         freetype2
+         gcc-libs
+         glibc
+         icu
+         kactivities
+         kactivities-stats
+         kactivitymanagerd
+         karchive
+         kauth
+         kbookmarks
+         kcmutils
+         kcolorscheme
+         kcompletion
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kde-cli-tools
+         kdeclarative
+         kded
+         kdbusaddons
+         kglobalaccel
+         kguiaddons
+         kholidays
+         ki18n
+         kiconthemes
+         kidletime
+         kio
+       # kio-extras 
+       # kio-fuse  
+         kitemmodels
+         kjobwidgets
+         knewstuff
+         knotifications
+         knotifyconfig
+         kpackage
+         kparts
+         kpipewire
+         krunner
+         kquickcharts
+         kscreenlocker
+         kservice
+         kstatusnotifieritem
+         ksvg
+         ksystemstats
+         ktexteditor
+         ktextwidgets
+         kuserfeedback
+         kwallet
+         kwayland
+         kwidgetsaddons
+         kwin
+         kwindowsystem
+         kxmlgui
+         layer-shell-qt
+         libcanberra
+         libice
+         libkscreen
+         libksysguard
+         libqalculate
+         libsm
+         libx11
+         libxau
+         libxcb
+         libxcrypt
+         libxcursor
+         libxfixes
+         libxft
+         libxtst
+         milou
+         ocean-sound-theme
+         perl
+         phonon-qt6
+       # plasma-integration
+         plasma-framework
+         plasma5support
+         prison
+         qt6-5compat
+         qt6-base
+         qt6-declarative
+         qt6-svg
+         qt6-tools # for qdbus
+         qt6-wayland
+         solid
+         systemd-libs
+         wayland
+         xcb-util
+         xcb-util-image
+         xorg-xmessage
+         xorg-xrdb
+         xorg-xsetroot
+         xorg-xwayland
+         zlib)
+makedepends=(baloo
+             extra-cmake-modules
+             gpsd
+             kdoctools
+             kunitconversion
+             networkmanager-qt
+             plasma-wayland-protocols
+             qt6-shadertools)
+optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
+            'baloo: Baloo search runner'
+            'discover: manage applications installation from the launcher'
+            'gpsd: GPS based geolocation'
+            'kdepim-addons: displaying PIM events in the calendar'
+            'kwayland-integration: Wayland integration for Qt5 applications'
+            'networkmanager-qt: IP based geolocation'
+            'plasma-workspace-wallpapers: additional wallpapers')
+conflicts=(plasma-wayland-session)
+replaces=(plasma-wayland-session)
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgbase-$pkgver.tar.xz{,.sig} kde.pam)
-sha256sums=('8d00b691cfbb4d7218f97d0c68a677f41cba6eaf18e8fe29976c92d3718201b8'
-            'SKIP'
-            '00090291204baabe9d6857d3b1419832376dd2e279087d718b64792691e86739')
+source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('4082d4e61484d0a62c88a0ef04347e3ff1758477fdb313f1d82e4e770d9a5a6b'
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 build() {
-  cmake -B build -S $pkgbase-$pkgver \
+  cmake -B build -S $pkgname-$pkgver \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DGLIBC_LOCALE_GEN=OFF \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
 
-package_plasma-workspace() {
-  optdepends=('plasma-workspace-wallpapers: additional wallpapers'
-              'gpsd: GPS based geolocation' 'networkmanager-qt5: IP based geolocation'
-              'kdepim-addons: displaying PIM events in the calendar'
-              'appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
-              'baloo5: Baloo search runner' 'discover: manage applications installation from the launcher')
-  backup=('etc/pam.d/kde')
-
+package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 "$srcdir"/kde.pam "$pkgdir"/etc/pam.d/kde
-
-  # Split plasma-wayland scripts
-  rm -r "$pkgdir"/usr/share/wayland-sessions
-}
-
-package_plasma-wayland-session() {
-  pkgdesc='Plasma Wayland session'
-  depends=(plasma-workspace qt5-wayland kwayland-integration xorg-xwayland)
-  groups=()
-
-  install -Dm644 build/login-sessions/plasmawayland.desktop "$pkgdir"/usr/share/wayland-sessions/plasmawayland.desktop
 }
