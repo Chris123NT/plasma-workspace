@@ -6,7 +6,7 @@
 pkgname=plasma-workspace
 pkgver=5.27.80
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3
+pkgrel=4
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -71,6 +71,7 @@ depends=(accountsservice
          layer-shell-qt
          libcanberra
          libice
+         libkexiv2
          libkscreen
          libksysguard
          libqalculate
