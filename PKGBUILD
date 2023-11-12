@@ -6,13 +6,13 @@
 pkgname=plasma-workspace
 pkgver=5.27.80
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=4
+pkgrel=5
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(accountsservice
-       # appstream-qt
+         appstream-qt
          fontconfig
          freetype2
          gcc-libs
@@ -116,8 +116,7 @@ makedepends=(baloo
              kdoctools
              kunitconversion
              networkmanager-qt
-             plasma-wayland-protocols
-             qt6-shadertools)
+             plasma-wayland-protocols)
 optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
             'baloo: Baloo search runner'
             'discover: manage applications installation from the launcher'
