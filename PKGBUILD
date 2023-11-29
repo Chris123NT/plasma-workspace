@@ -42,7 +42,7 @@ depends=(accountsservice
          kiconthemes
          kidletime
          kio
-         kio-extras 
+       # kio-extras 
        # kio-fuse  
          kitemmodels
          kjobwidgets
@@ -72,6 +72,7 @@ depends=(accountsservice
          libcanberra
          libice
          libkexiv2
+         libkscreen
          libksysguard
          libqalculate
          libsm
@@ -91,6 +92,7 @@ depends=(accountsservice
          libplasma
          plasma5support
          prison
+         qt6-5compat
          qt6-base
          qt6-declarative
          qt6-shadertools # for QtGrphicalEffects
@@ -98,7 +100,6 @@ depends=(accountsservice
          qt6-tools # for qdbus
          qt6-virtualkeyboard # QML
          qt6-wayland
-         sh
          solid
          systemd-libs
          wayland
