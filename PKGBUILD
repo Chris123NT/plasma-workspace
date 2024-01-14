@@ -43,7 +43,9 @@ depends=(accountsservice
          kidletime
          kio
          kio-extras 
-         kio-fuse  
+         kio-fuse
+         kirigami
+         kirigami-addons
          kitemmodels
          kjobwidgets
          knewstuff
@@ -85,18 +87,18 @@ depends=(accountsservice
          libxtst
          milou
          ocean-sound-theme
-         perl
          phonon-qt6
          plasma-integration
          libplasma
          plasma5support
          prison
+         qt6-5compat
          qt6-base
          qt6-declarative
          qt6-shadertools # for QtGrphicalEffects
          qt6-svg
          qt6-tools # for qdbus
-         qt6-virtualkeyboard # QML
+         qt6-virtualkeyboard
          qt6-wayland
          sh
          solid
