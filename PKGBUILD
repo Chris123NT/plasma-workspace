@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
+license=(LGPL-2.0-or-later)
 depends=(accountsservice
          appstream-qt
          fontconfig
