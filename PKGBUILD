@@ -42,8 +42,8 @@ depends=(accountsservice
          kiconthemes
          kidletime
          kio
-         kio-extras 
-         kio-fuse
+#         kio-extras
+#         kio-fuse
          kirigami
          kirigami-addons
          kitemmodels
@@ -88,7 +88,7 @@ depends=(accountsservice
          milou
          ocean-sound-theme
          phonon-qt6
-         plasma-integration
+#         plasma-integration
          libplasma
          plasma5support
          prison
