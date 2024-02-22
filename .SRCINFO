@@ -75,6 +75,7 @@ pkgbase = plasma-workspace
 	depends = layer-shell-qt
 	depends = libcanberra
 	depends = libice
+	depends = libkexiv2
 	depends = libksysguard
 	depends = libqalculate
 	depends = libsm

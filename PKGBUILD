@@ -73,7 +73,7 @@ depends=(accountsservice
          layer-shell-qt
          libcanberra
          libice
-#         libkexiv2
+         libkexiv2
          libksysguard
          libqalculate
          libsm
