@@ -6,7 +6,7 @@
 pkgname=plasma-workspace
 pkgver=6.0.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -42,8 +42,8 @@ depends=(accountsservice
          kiconthemes
          kidletime
          kio
-#         kio-extras
-#         kio-fuse
+         kio-extras
+         kio-fuse
          kirigami
          kirigami-addons
          kitemmodels
@@ -88,7 +88,7 @@ depends=(accountsservice
          milou
          ocean-sound-theme
          phonon-qt6
-#         plasma-integration
+         plasma-integration
          libplasma
          plasma5support
          prison
