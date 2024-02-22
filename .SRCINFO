@@ -1,7 +1,7 @@
 pkgbase = plasma-workspace
 	pkgdesc = KDE Plasma Workspace
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -128,7 +128,7 @@ pkgbase = plasma-workspace
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 734ffa213bdc206f1374048dd7cc15580f8dc1ba567cbeaedbf03070e5ea0713
+	sha256sums = b1c32a3bc33168559626f6a398c31dbc2023ae2550dbe9db1d0e20549050f0b4
 	sha256sums = SKIP
 
 pkgname = plasma-workspace
