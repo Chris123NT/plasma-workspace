@@ -126,7 +126,8 @@ optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 appl
             'kwayland-integration: Wayland integration for Qt5 applications'
             'networkmanager-qt: IP based geolocation'
             'plasma-workspace-wallpapers: additional wallpapers'
-            'plasma5-integration: use Plasma settings in Qt5 applications')
+            'plasma5-integration: use Plasma settings in Qt5 applications'
+            'xdg-desktop-portal-gtk: sync font settings to Flatpak apps')
 conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
 groups=(plasma)
