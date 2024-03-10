@@ -95,7 +95,6 @@ depends=(accountsservice
          qt6-5compat
          qt6-base
          qt6-declarative
-         qt6-shadertools # for QtGrphicalEffects
          qt6-svg
          qt6-tools # for qdbus
          qt6-virtualkeyboard
