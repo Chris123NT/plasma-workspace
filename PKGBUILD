@@ -75,6 +75,7 @@ depends=(accountsservice
          libice
          libkexiv2
          libksysguard
+         libplasma
          libqalculate
          libsm
          libx11
@@ -88,10 +89,9 @@ depends=(accountsservice
          milou
          ocean-sound-theme
          phonon-qt6
-         plasma-integration
-         libplasma
          plasma5support
          prison
+         qcoro-qt6
          qt6-5compat
          qt6-base
          qt6-declarative
@@ -147,5 +147,7 @@ build() {
 }
 
 package() {
+  depends+=(plasma-integration) # Declare runtime dependency here to avoid dependency cycles at build time
+
   DESTDIR="$pkgdir" cmake --install build
 }
