@@ -130,19 +130,13 @@ optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 appl
 conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/plasma/plasma-workspace/-/commit/40961983.patch)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('6755509ff6012f635fcd1f71b7cfb329e1dae6dc386778a3c8ba9bbf6bd51363'
-            'SKIP'
-            'abf0cdcb94402f5d2c85f85064f549fecac25ed794c8c6ce4ff0566abcbe0946')
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
-
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < 40961983.patch
-}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
