@@ -13,6 +13,7 @@ url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
 depends=(accountsservice
          appstream-qt
+         dbus
          fontconfig
          freetype2
          gcc-libs
@@ -63,6 +64,7 @@ depends=(accountsservice
          ksystemstats
          ktexteditor
          ktextwidgets
+         kunitconversion
          kuserfeedback
          kwallet
          kwayland
@@ -91,7 +93,6 @@ depends=(accountsservice
          phonon-qt6
          plasma5support
          prison
-         qcoro-qt6
          qt6-5compat
          qt6-base
          qt6-declarative
