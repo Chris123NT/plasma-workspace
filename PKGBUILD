@@ -151,5 +151,4 @@ package() {
   depends+=(plasma-integration) # Declare runtime dependency here to avoid dependency cycles at build time
 
   DESTDIR="$pkgdir" cmake --install build
-  rm "$pkgdir"/usr/share/xdg-desktop-portal/kde-portals.conf
 }
