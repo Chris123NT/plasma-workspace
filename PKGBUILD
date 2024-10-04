@@ -119,7 +119,7 @@ makedepends=(baloo
              kunitconversion
              networkmanager-qt
              plasma-wayland-protocols
-             qcoro-qt6)
+             qcoro)
 optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
             'baloo: Baloo search runner'
             'discover: manage applications installation from the launcher'
