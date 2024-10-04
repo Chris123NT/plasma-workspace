@@ -19,8 +19,6 @@ depends=(accountsservice
          gcc-libs
          glibc
          icu
-         plasma-activities
-         plasma-activities-stats
          kactivitymanagerd
          karchive
          kauth
@@ -91,6 +89,8 @@ depends=(accountsservice
          milou
          ocean-sound-theme
          phonon-qt6
+         plasma-activities
+         plasma-activities-stats
          plasma5support
          prison
          qt6-5compat
