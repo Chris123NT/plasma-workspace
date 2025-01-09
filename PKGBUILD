@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 
 pkgname=plasma-workspace
-pkgver=6.1.90
+pkgver=6.2.90
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
@@ -39,7 +39,6 @@ depends=(accountsservice
          kholidays
          ki18n
          kiconthemes
-         kidletime
          kio
          kio-extras
          kio-fuse
@@ -106,17 +105,17 @@ depends=(accountsservice
          systemd-libs
          wayland
          xcb-util
+         xcb-util-cursor
          xcb-util-image
          xorg-xmessage
          xorg-xrdb
-         xorg-xsetroot
          xorg-xwayland
          zlib)
 makedepends=(baloo
              extra-cmake-modules
              gpsd
              kdoctools
-             kunitconversion
+             kidletime
              networkmanager-qt
              plasma-wayland-protocols
              qcoro)
@@ -134,7 +133,7 @@ conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
 groups=(plasma)
 source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('e3f51217f9900b5001a4e437b9989295484c2a7198ada15a928f853af2c684e9'
+sha256sums=('f389271286aa5bfde3f072a19efed540322fa020d82f69a0bbd70ed5acbc42dc'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
