@@ -133,8 +133,7 @@ replaces=(plasma-wayland-session)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('85d99dd0d8a33758997af033d24c45ee399152efd2c8b7de0bd3a34fd1cdd155'
-            'SKIP'
-            'ecaf4204a6de3f85f28810e3a1b3360cb3518cf435d72644a921d3d6fb2165ff')
+	     'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
