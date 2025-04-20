@@ -134,7 +134,7 @@ pkgbase = plasma-workspace
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = 85d99dd0d8a33758997af033d24c45ee399152efd2c8b7de0bd3a34fd1cdd155
 	sha256sums = SKIP
-	sha256sums = 101accef84c00a5b90b27c0efb0543a827218c80e0106e9223b997d12020f757
+	sha256sums = b65bb6a32db0a8b18f81b050cb3d07e747aceebd8776f5b1ebfe3d1dae1e7e33
 
 pkgname = plasma-workspace
 	depends = accountsservice
