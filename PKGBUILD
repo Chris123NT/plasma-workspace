@@ -131,19 +131,14 @@ optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 appl
 conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/plasma/plasma-workspace/-/commit/47d50235.patch)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('7f508f6ca27d7d615eee27919dd0b0f94d168ba81c3a4d543968046bccb787f2'
-            'SKIP'
-            'b65bb6a32db0a8b18f81b050cb3d07e747aceebd8776f5b1ebfe3d1dae1e7e33')
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
-prepare() {
-  patch -d $pkgname-$pkgver -p1 < 47d50235.patch # Fix padding in notifications
-}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
