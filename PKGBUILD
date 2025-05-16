@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 
 pkgname=plasma-workspace
-pkgver=6.2.91
+pkgver=6.3.90
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
@@ -95,6 +95,7 @@ depends=(accountsservice
          qt6-5compat
          qt6-base
          qt6-declarative
+         qt6-location
          qt6-positioning
          qt6-svg
          qt6-tools # for qdbus
@@ -132,12 +133,13 @@ conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
 groups=(plasma)
 source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('e0811d27c45da5b0b5daf29153ec9b93d14574cb9a504ae4d9fa90d2f02800a0'
+sha256sums=('ddebf8ad8ba600199f37dab571042d033fce40dd2889bbd5c7fe2708172fad56'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
+
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
