@@ -118,9 +118,6 @@ makedepends=(baloo
              networkmanager-qt
              plasma-wayland-protocols
              qcoro)
-
-conflicts=(plasma-wayland-session)
-replaces=(plasma-wayland-session)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('961ef54f7fd21f212f8d633300f1bb0520524aa9794e433ae1abe16ac0560b2b'
@@ -151,6 +148,8 @@ package_plasma-workspace() {
             'plasma5-integration: use Plasma settings in Qt5 applications'
             'xdg-desktop-portal-gtk: sync font settings to Flatpak apps')
   depends+=(plasma-integration) # Declare runtime dependency here to avoid dependency cycles at build time
+  conflicts=(plasma-wayland-session)
+  replaces=(plasma-wayland-session)
 
   DESTDIR="$pkgdir" cmake --install build
 
@@ -161,7 +160,7 @@ package_plasma-workspace() {
 package_plasma-x11-session() {
   pkgdesc='Plasma X11 session'
   depends=(plasma-workspace kwin-x11)
-  groups=(plasma)
+  groups=()
 
   install -Dm644 build/login-sessions/plasmax11.desktop "$pkgdir"/usr/share/xsessions/plasamax11.desktop
 }
