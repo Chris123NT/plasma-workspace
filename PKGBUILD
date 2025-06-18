@@ -2,8 +2,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
-
-pkgname=plasma-workspace
+pkgbase=plasma-workspace
+pkgname=(plasma-workspace plasma-x11-session)
 pkgver=6.4.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
@@ -118,16 +118,7 @@ makedepends=(baloo
              networkmanager-qt
              plasma-wayland-protocols
              qcoro)
-optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
-            'baloo: Baloo search runner'
-            'discover: manage applications installation from the launcher'
-            'kdepim-addons: displaying PIM events in the calendar'
-            'kwayland-integration: Wayland integration for Qt5 applications'
-            'kwin-x11: X session window manager'
-            'networkmanager-qt: IP based geolocation'
-            'plasma-workspace-wallpapers: additional wallpapers'
-            'plasma5-integration: use Plasma settings in Qt5 applications'
-            'xdg-desktop-portal-gtk: sync font settings to Flatpak apps')
+
 conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
 groups=(plasma)
@@ -148,8 +139,29 @@ build() {
   cmake --build build
 }
 
-package() {
+package_plasma-workspace() {
+  optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
+            'baloo: Baloo search runner'
+            'discover: manage applications installation from the launcher'
+            'kdepim-addons: displaying PIM events in the calendar'
+            'kwayland-integration: Wayland integration for Qt5 applications'
+            'kwin-x11: X session window manager'
+            'networkmanager-qt: IP based geolocation'
+            'plasma-workspace-wallpapers: additional wallpapers'
+            'plasma5-integration: use Plasma settings in Qt5 applications'
+            'xdg-desktop-portal-gtk: sync font settings to Flatpak apps')
   depends+=(plasma-integration) # Declare runtime dependency here to avoid dependency cycles at build time
 
   DESTDIR="$pkgdir" cmake --install build
+
+  rm -r "$pkgdir"/usr/share/xsessions/plasmax11.desktop
+}
+
+
+package_plasma-wayland-session() {
+  pkgdesc='Plasma X11 session'
+  depends=(plasma-workspace kwin-x11)
+  groups=(plasma)
+
+  install -Dm644 build/login-sessions/plasmax11.desktop "$pkgdir"/usr/share/xsessions/plasamax11.desktop
 }
