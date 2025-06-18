@@ -4,9 +4,9 @@
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 
 pkgname=plasma-workspace
-pkgver=6.3.5
+pkgver=6.4.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -95,6 +95,7 @@ depends=(accountsservice
          qt6-5compat
          qt6-base
          qt6-declarative
+         qt6-location
          qt6-positioning
          qt6-svg
          qt6-tools # for qdbus
@@ -122,6 +123,7 @@ optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 appl
             'discover: manage applications installation from the launcher'
             'kdepim-addons: displaying PIM events in the calendar'
             'kwayland-integration: Wayland integration for Qt5 applications'
+            'kwin-x11: X session window manager'
             'networkmanager-qt: IP based geolocation'
             'plasma-workspace-wallpapers: additional wallpapers'
             'plasma5-integration: use Plasma settings in Qt5 applications'
@@ -130,7 +132,7 @@ conflicts=(plasma-wayland-session)
 replaces=(plasma-wayland-session)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('7f508f6ca27d7d615eee27919dd0b0f94d168ba81c3a4d543968046bccb787f2'
+sha256sums=('961ef54f7fd21f212f8d633300f1bb0520524aa9794e433ae1abe16ac0560b2b'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
