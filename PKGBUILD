@@ -2,9 +2,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
-
-pkgname=plasma-workspace
-pkgver=6.4.0
+pkgbase=plasma-workspace
+pkgname=(plasma-workspace plasma-x11-session)
+pkgver=6.4.90
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
@@ -39,6 +39,7 @@ depends=(accountsservice
          kholidays
          ki18n
          kiconthemes
+         kidletime
          kio
          kio-extras
          kio-fuse
@@ -47,6 +48,7 @@ depends=(accountsservice
          kitemmodels
          kjobwidgets
          knewstuff
+         knighttime
          knotifications
          knotifyconfig
          kpackage
@@ -61,7 +63,6 @@ depends=(accountsservice
          ksystemstats
          ktexteditor
          ktextwidgets
-         kunitconversion
          kuserfeedback
          kwallet
          kwayland
@@ -87,7 +88,6 @@ depends=(accountsservice
          libxtst
          milou
          ocean-sound-theme
-         phonon-qt6
          plasma-activities
          plasma-activities-stats
          plasma5support
@@ -116,29 +116,22 @@ makedepends=(baloo
              extra-cmake-modules
              kdoctools
              networkmanager-qt
+             phonon-qt6
              plasma-wayland-protocols
              qcoro)
-optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
-            'baloo: Baloo search runner'
-            'discover: manage applications installation from the launcher'
-            'kdepim-addons: displaying PIM events in the calendar'
-            'kwayland-integration: Wayland integration for Qt5 applications'
-            'kwin-x11: X session window manager'
-            'networkmanager-qt: IP based geolocation'
-            'plasma-workspace-wallpapers: additional wallpapers'
-            'plasma5-integration: use Plasma settings in Qt5 applications'
-            'xdg-desktop-portal-gtk: sync font settings to Flatpak apps')
-conflicts=(plasma-wayland-session)
-replaces=(plasma-wayland-session)
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('961ef54f7fd21f212f8d633300f1bb0520524aa9794e433ae1abe16ac0560b2b'
+source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('5ce86213695ff471ce1f4660ef3394354706d2b941fed7250146185c3b9f05f6'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
+prepare() {
+# Fix doc build with libxml2 2.15
+  find -name index.docbook | xargs sed -e 's|index.html "|index.html"|g' -i
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
@@ -148,8 +141,31 @@ build() {
   cmake --build build
 }
 
-package() {
+package_plasma-workspace() {
+  optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
+            'baloo: Baloo search runner'
+            'discover: manage applications installation from the launcher'
+            'kdepim-addons: displaying PIM events in the calendar'
+            'kwayland-integration: Wayland integration for Qt5 applications'
+            'kwin-x11: X session window manager'
+            'networkmanager-qt: IP based geolocation'
+            'plasma-workspace-wallpapers: additional wallpapers'
+            'plasma5-integration: use Plasma settings in Qt5 applications'
+            'xdg-desktop-portal-gtk: sync font settings to Flatpak apps')
   depends+=(plasma-integration) # Declare runtime dependency here to avoid dependency cycles at build time
+  conflicts=(plasma-wayland-session)
+  replaces=(plasma-wayland-session)
 
   DESTDIR="$pkgdir" cmake --install build
+
+  rm -r "$pkgdir"/usr/share/xsessions/plasmax11.desktop
+}
+
+
+package_plasma-x11-session() {
+  pkgdesc='Plasma X11 session'
+  depends=(plasma-workspace kwin-x11)
+  groups=()
+
+  install -Dm644 build/login-sessions/plasmax11.desktop -t "$pkgdir"/usr/share/xsessions
 }
