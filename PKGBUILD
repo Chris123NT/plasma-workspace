@@ -6,7 +6,7 @@ pkgbase=plasma-workspace
 pkgname=(plasma-workspace plasma-x11-session)
 pkgver=6.4.91
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -100,7 +100,6 @@ depends=(accountsservice
          qt6-svg
          qt6-tools # for qdbus
          qt6-virtualkeyboard
-         qt6-wayland
          sh
          solid
          systemd-libs
