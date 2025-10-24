@@ -136,7 +136,7 @@ build() {
 }
 
 package_plasma-workspace() {
-  optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
+  optdepends=('appmenu-gtk-module: global menu support for some GTK3 applications'
             'baloo: Baloo search runner'
             'discover: manage applications installation from the launcher'
             'kdepim-addons: displaying PIM events in the calendar'
