@@ -4,9 +4,9 @@
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 pkgbase=plasma-workspace
 pkgname=(plasma-workspace plasma-x11-session)
-pkgver=6.4.91
+pkgver=6.5.90
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -50,7 +50,6 @@ depends=(accountsservice
          knewstuff
          knighttime
          knotifications
-         knotifyconfig
          kpackage
          kparts
          kpipewire
@@ -90,7 +89,6 @@ depends=(accountsservice
          ocean-sound-theme
          plasma-activities
          plasma-activities-stats
-         plasma5support
          prison
          qt6-5compat
          qt6-base
@@ -115,12 +113,11 @@ makedepends=(baloo
              extra-cmake-modules
              kdoctools
              networkmanager-qt
-             phonon-qt6
              plasma-wayland-protocols
              qcoro)
 groups=(plasma)
 source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('688c25ab325a991aadbf591ee53037824597d12d63cdc6840dbbc1be1f838434'
+sha256sums=('12a4b52e983b3efaa0d6c142ac661736bf5bda794015f98cf3890bcc7de7749f'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -128,8 +125,7 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
-# Fix doc build with libxml2 2.15
-  find -name index.docbook | xargs sed -e 's|index.html "|index.html"|g' -i
+  sed -e 's/NotifyConfig//' -i $pkgname-$pkgver/CMakeLists.txt
 }
 
 build() {
@@ -141,7 +137,7 @@ build() {
 }
 
 package_plasma-workspace() {
-  optdepends=('appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
+  optdepends=('appmenu-gtk-module: global menu support for some GTK3 applications'
             'baloo: Baloo search runner'
             'discover: manage applications installation from the launcher'
             'kdepim-addons: displaying PIM events in the calendar'
