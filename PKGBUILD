@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
 pkgbase=plasma-workspace
 pkgname=(plasma-workspace plasma-x11-session)
-pkgver=6.5.90
+pkgver=6.5.91
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
@@ -117,16 +117,12 @@ makedepends=(baloo
              qcoro)
 groups=(plasma)
 source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('12a4b52e983b3efaa0d6c142ac661736bf5bda794015f98cf3890bcc7de7749f'
+sha256sums=('69f2059825da2b9e1e0790c9ed7f098818fe74fa6e5b00e976a0cf3564cec662'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
-
-prepare() {
-  sed -e 's/NotifyConfig//' -i $pkgname-$pkgver/CMakeLists.txt
-}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
