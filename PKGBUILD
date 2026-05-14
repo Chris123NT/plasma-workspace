@@ -2,9 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Alexey D. <lq07829icatm at rambler.ru>
+
 pkgbase=plasma-workspace
 pkgname=(plasma-workspace plasma-x11-session)
-pkgver=6.5.91
+pkgver=6.6.90
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
@@ -16,7 +17,6 @@ depends=(accountsservice
          dbus
          fontconfig
          freetype2
-         gcc-libs
          glibc
          icu
          kactivitymanagerd
@@ -72,11 +72,13 @@ depends=(accountsservice
          layer-shell-qt
          libcanberra
          libice
+         libgcc
          libkexiv2
          libksysguard
          libplasma
          libqalculate
          libsm
+         libstdc++
          libx11
          libxau
          libxcb
@@ -105,6 +107,7 @@ depends=(accountsservice
          xcb-util
          xcb-util-cursor
          xcb-util-image
+         xcb-util-wm
          xorg-xmessage
          xorg-xrdb
          xorg-xwayland
@@ -117,7 +120,7 @@ makedepends=(baloo
              qcoro)
 groups=(plasma)
 source=(https://download.kde.org/unstable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('69f2059825da2b9e1e0790c9ed7f098818fe74fa6e5b00e976a0cf3564cec662'
+sha256sums=('dbec8e31850abfbadb4f0c5e0712c46a325c0f4c8519012d22fc98446b7c47ec'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
